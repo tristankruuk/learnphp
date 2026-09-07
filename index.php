@@ -1,13 +1,25 @@
 <?php
-$test = 'hello';
-$test = 'hello' . ' world'; // Tekstide ühendamine
-$test .= '!'; // Lõppu lisamine
-$name = 'Kaspar';
-$age = 33;
-$test = $name . ' is ' . $age . ' years old.'; // Muutujad tekstis
-$test = "$name is $age years old."; // Muurujad otse teksti sisse
-$test = "hello\n\nworld"; // Uus rida
-$letter = 'a'; 
-$letter++; // Tähestiku järgi järgmine täht
-var_dump($letter);
+$test = true;
+$test = false;
+$test = true && true; // Vähemalt 1 false = false
+$test = true || false; // Vähemalt 1 true = true
+$test = !false; // Pöörab väärtuse vastupidi
+
+// Kas vastab tõele?
+$test = 10 > 5;
+$test = 10 < 5;
+$test = 10 < 10;
+
+$test = 10 == 10; // Võrdne väärtus
+$test = 10 === 10; // Võrdne väärtus + tüüp
+$test = 10 == '10';
+$test = 10 === '10';
+$test = 10 != 5; // Ei ole võrdne (nagu ==)
+$test = 10 !== 5; // Ei ole võrdne (nagu ===)
+
+$test = 10 >= 10; // Suurem või võrdne
+$test = 10 <= 10; // Väiksem või võrdne
+
+$test = true && false || (true && !true); // Tehe, kasutatakse sisselogimise kontrollimisel
+var_dump($test);
 ?>
