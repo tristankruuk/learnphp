@@ -1,23 +1,24 @@
 <?php
-$test = 10; // Integer
-$test = 3.1; // Float
-$test = "Hello World"; // String
-$test = "õpilane";
-$test = "👨"; // 4
-$test = "👨🏿"; // 8
-$test = true; // Boolean
-$test = null; // Väärtuse puudmine (NULL)
-$lol; // Annab warningu (Undefined)
-var_dump($test);
-var_dump($lol);
-$test = [1, 2, "three", true]; // Array ehk nimekiri
-var_dump($test);
-$test = new stdClass(); // Objektiga saab lisada omadusi
-$test->name = "John";
-var_dump($test);
+$test = 10 + 2;
+$test = 10 - 2;
+$test = 10 * 2;
+$test = 10 / 2;
 
-$num1 = 1000000000;
-$num2 = "1000000000";
-var_dump($num1 == $num2); // Kas väärtused on võrdsed?
-var_dump($num1 === $num2); // Kas väärtused + tüübid on võrdsed?
+$test = $test - 1;
+
+// Samad, aga ei pea välja kirjutama, et x=x-1, vaid kohe võetakse väärtusest maha
+$test -= 1;
+$test += 1;
+$test *= 2;
+$test /= 2;
+
+$test = 10 % 3; // Jääk
+$test++; // Suurendab ühe võrra
+$test--; // Vähendab ühe võrra
+$test = (10 + (2 - 3) * 4) / 2;
+$test %= 2; // Muutuja jääk
+$test **= 3; // Muutuja astendamine
+$test = 2 ** 4; // Astendamine
+$test = sqrt(16); // Ruutjuur
+var_dump($test);
 ?>
