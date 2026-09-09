@@ -21,19 +21,27 @@ class Box {
 }
 
 
-$box1 = new Box();
-$box1->width = 10;
-$box1->height = 20;
-$box1->length = 30;
-$box1->open();
-var_dump($box1);
-var_dump($box1->volume());
 
-$box2 = new Box();
-$box2->width = 30;
-$box2->height = 40;
-$box2->length = 50;
-var_dump($box2);
-var_dump($box2->volume());
-var_dump($box1);
+/*
+ILMA POINTERITA
+       x ---võtab väärtused---> y
+Oma väärtustega          Oma väärtustega
+
+
+POINTERIGA
+       x <---vaatab väärtuseid--- y
+Oma väärtustega          Vaatab x'i väärtuseid
+*/
+
+$num1 = 1;
+$num2 = &$num1; // & on pointer. See ei võta väärtust enda objektile, vaid lisab viite väärtusele.
+$num1 = 2;
+var_dump($num1, $num2);
+
+$box1 = new Box();
+$box1->width = 1;
+$box2 = clone $box1; // Clone ei lisa viidet, vaid loob täiesti uue objekti, millel on samad väärtused
+$box2->width = 2;
+var_dump($box1, $box2)
+
 ?>
