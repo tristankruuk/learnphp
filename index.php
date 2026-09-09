@@ -1,11 +1,21 @@
 <?php
 
+/*
+PUBLIC, PRIVATE, PROTECTED
+
+    Public on avalik. Kõikidel objektidel on ligippäs väärtustele.
+    Private peidab väärtuse ära. MetalBox teab väärtuse olemasolust, kuid ei tea selle väärtust.
+    Protected peidab muutuja ära. MetalBox ei saa väärtusele ega muutujale ligi.
+
+*Kuna väärtused on Box objekti sees, siis Box teab KÕIKI neid väärtuseid, kuid teistel objektidel võib olla ligipääs limiteeritud
+*/
+
 class Box {
     public $width;
-    public $height;
-    public $length;
-    public $isOpen = false;
-    public $hasBeenOpen = false;
+    private $height;
+    protected $length;
+    public bool $isOpen = false; // Bool ehk lühend booleanist. Kontrollib kas väärtus on true/false
+    public bool $hasBeenOpen = false;
 
     // Kuna $this'il on juba dollarimärk, siis isOpenil ei pea uuesti olema
     public function open() {
@@ -18,30 +28,34 @@ class Box {
      public function volume() {
         return $this->height * $this->length * $this->width;
     }
+
+    // Kontrollib, et pikkuse mõõduks ei sisestataks negatiivset väärtust
+    public function setHeight($height) {
+        if($height > 0) {
+            $this->height = $height;
+        }
+        echo("ERROR: Height can't be negative");
+    }
+
+    public function getHeight() {
+        return $this->height;
+    }
 }
 
+// x extends y
+// extends võtab samad väärtused mis y ning loob uue objekti x
+class MetalBox extends Box {
+    public $weight;
 
+    public function mass(){
+        return $this->volume() * $this->weight;
+    }
+}
 
-/*
-ILMA POINTERITA
-       x ---võtab väärtused---> y
-Oma väärtustega          Oma väärtustega
-
-
-POINTERIGA
-       x <---vaatab väärtuseid--- y
-Oma väärtustega          Vaatab x'i väärtuseid
-*/
-
-$num1 = 1;
-$num2 = &$num1; // & on pointer. See ei võta väärtust enda objektile, vaid lisab viite väärtusele.
-$num1 = 2;
-var_dump($num1, $num2);
-
-$box1 = new Box();
-$box1->width = 1;
-$box2 = clone $box1; // Clone ei lisa viidet, vaid loob täiesti uue objekti, millel on samad väärtused
-$box2->width = 2;
-var_dump($box1, $box2)
+$metal1 = new MetalBox();
+$metal1->width = 1; // Public
+$metal1->height = 1; // Private
+$metal1->length = 1; // Protected
+var_dump($metal1);
 
 ?>
