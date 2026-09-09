@@ -1,46 +1,47 @@
 <?php
-$num = 10;
+for($i=0; $i<10; $i++){
+    var_dump($i);
+};
 
-// Lihtne if
-if($num > 5) {
-    var_dump('Bigger');
+for($i=9; $i>=0; $i--){
+    var_dump($i);
+};
+
+
+
+for($i=2; $i<1_000_000; $i*=2){
+    var_dump($i);
+};
+
+
+
+$time = time();
+$n = 0;
+while($time+1 > time()) {
+    $n++;
+}
+var_dump($n);
+
+while(false){
+    var_dump('WHILE');
 }
 
-if($num > 5) {
-    var_dump('Bigger');
-} else {
-    var_dump('Smaller');
-}
+do {
+    var_dump('DO');
+} while(false);
 
-// If koos else if-iga, kui on rohkem tingimusi, siis esimene on if, viimane else ja kõik ülejäänud else if
-if($num > 5) {
-    var_dump('Bigger');
-} else if($num < 5) {
-    var_dump('Smaller');
-} else {
-    var_dump('Equal');
-}
+// while(true) {
 
-$i = 1;
+// }
 
-// Switch case
-switch($i) {
-    case 1:
-        var_dump('yx');
-        break;
-    case 2:
-        var_dump('kaks');
-        break;
-    case 3:
-    case 4:
-        var_dump('kolm neli');
-        break;
-    case 5:
-        var_dump('viis');
-    case 6: 
-        var_dump('kuus');
-        break;
-    default:
-        var_dump('dunno');
-}
+$fruits = ['Apple', 'Cherry', 'Banana'];
+
+foreach($fruits as $fruit) {
+    var_dump($fruit);
+};
+
+
+foreach($fruits as $key=>$fruit) {
+    var_dump($fruit, $key);
+};
 ?>
