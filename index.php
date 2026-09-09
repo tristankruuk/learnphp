@@ -1,61 +1,31 @@
 <?php
 
 /*
-PUBLIC, PRIVATE, PROTECTED
+TRAIT
 
-    Public on avalik. Kõikidel objektidel on ligippäs väärtustele.
-    Private peidab väärtuse ära. MetalBox teab väärtuse olemasolust, kuid ei tea selle väärtust.
-    Protected peidab muutuja ära. MetalBox ei saa väärtusele ega muutujale ligi.
-
-*Kuna väärtused on Box objekti sees, siis Box teab KÕIKI neid väärtuseid, kuid teistel objektidel võib olla ligipääs limiteeritud
+    Kui inheritance võimaldab baasile lisada veel muutujaid, siis traite saab suvaliselt objektidele külge loopida
 */
 
-class Box {
-    public $width;
-    private $height;
-    protected $length;
-    public bool $isOpen = false; // Bool ehk lühend booleanist. Kontrollib kas väärtus on true/false
-    public bool $hasBeenOpen = false;
+class Cat {
+    use MakesSound;
+}
 
-    // Kuna $this'il on juba dollarimärk, siis isOpenil ei pea uuesti olema
-    public function open() {
-        $this->isOpen = true;
-        $this->hasBeenOpened = true;
-    }
-    public function close() {
-        $this->isOpen = false;
-    }
-     public function volume() {
-        return $this->height * $this->length * $this->width;
-    }
+class Dog {
+    use HasSmell, MakesSound;
+}
 
-    // Kontrollib, et pikkuse mõõduks ei sisestataks negatiivset väärtust
-    public function setHeight($height) {
-        if($height > 0) {
-            $this->height = $height;
-        }
-        echo("ERROR: Height can't be negative");
-    }
-
-    public function getHeight() {
-        return $this->height;
+trait HasSmell {
+    public $smell;
+    public function sniff() {
+        return 'Smells like ' . $this->smell; 
     }
 }
 
-// x extends y
-// extends võtab samad väärtused mis y ning loob uue objekti x
-class MetalBox extends Box {
-    public $weight;
-
-    public function mass(){
-        return $this->volume() * $this->weight;
+trait MakesSound {
+    public $sound;
+    public function sniff() {
+        return $this->sound; 
     }
 }
-
-$metal1 = new MetalBox();
-$metal1->width = 1; // Public
-$metal1->height = 1; // Private
-$metal1->length = 1; // Protected
-var_dump($metal1);
 
 ?>
