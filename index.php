@@ -1,45 +1,18 @@
 <?php
 
-$name= 'Tristan';
-$coinflip = rand(0, 1);
+$number = 1;
+
+function calc() {
+    for($i=0; $i<334; $i++){
+        return $anwser = $i*3;
+    }
+    for($e=0; $e<200; $e++){
+        return $anwser = $e*5;
+    }
+
+    var_dump($anwser);
+}
+
+calc();
 
 ?>
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-
-
-<body>
-    <!--
-    <h1>Hello < ?php echo = $name?>!</h1>
-
-    Saab muuta ümber:
-    -->
-    <h1>Hello <?=$name?>!</h1>
-
-
-    <?php if($coinflip): ?>
-        <h1>Kull</h1>
-    <?php else: ?>
-        <h1>Kiri</h1>
-    <?php endif ?>
-
-
-    <ul>
-        <?php for ($i=0;$i<10;$i++): ?>
-            <li><?=$i?></li>
-        <?php endfor ?>
-    </ul>
-</body>
-</html>
