@@ -1,45 +1,46 @@
 <?php
 
-class Box {
-    public static $count = 0;
+// library
 
-    public function __construct(private $w, private $h, private $l) {
-        self::$count++;
+class Job {
+    public function task(ConsoleLogger|NothingLogger $logger) {
+        for ($i = 0; $i < 10; $i++) {
+            // Mingisugune task tehakse (faili laadimine vmidaiganes)
+            $logger->log("Task $i was done!");
+        }
     }
+}
 
-    public function volume() {
-        return $this->w *  $this->h * $this->l;
+class ConsoleLogger {
+    public function log($message) {
+        echo "$message\n";
     }
+}
 
-    // self::class kirjutab välja klassi nime, kus kood on
-    // static::class  kirjutab välja klassi nime, kus ta välja kutsutakse
-    public static function me() {
-        var_dump(self::class);
-        var_dump(static::class);
-        var_dump($this->w); // Muutuja ei tööta staatilises funktsioonis
+class NothingLogger {
+    public function log($message) {
+
     }
 }
 
 
 
-class MetalBox extends Box {
+// user code
 
+class FileLogger {
+    public function log($message) {
+        $file = fopen('log.txt', 'a');
+        fwrite($file, "$message\n");
+        fclose($file);
+    }
 }
 
+$job = new Job();
+$logger = new NothingLogger();
+$job->task($logger);
 
 
-// Staatiline väärtus on nagu klassi muutuja.
-// Seda ei määrata igale objektile, vaid tervele klassile, kus võib olla palju objekte
 
-// $box1::$count = 1;
-// $box2::$count = 2;
-
-Box::$count = 1;
-Box::$count = 2;
-Box::me();
-MetalBox::me(); // Kuna see osa koodist on päritud Box-ist, siis self vaatab et ta klass on Box
-
-var_dump(Box::$count, Box::$count);
-// var_dump($box1::$count, $box2::$count);
+// Kasutajatel on palju soove ja nad tahavad oma lahendusi. Pole mõtet lasta neil koodi kirjutada ja kogu koodi mega pikaks lasta, selle asemel saab kasutada interface
 
 ?>
