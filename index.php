@@ -1,18 +1,10 @@
 <?php
 
-$number = 1;
+$sum = 0;
 
-function calc() {
-    for($i=0; $i<334; $i++){
-        return $anwser = $i*3;
-    }
-    for($e=0; $e<200; $e++){
-        return $anwser = $e*5;
-    }
-
-    var_dump($anwser);
+for($i=1;$i<1000;$i++) {
+   if($i%3 === 0 || $i%5 === 0) {
+        $sum+=$i;
+   } 
 }
-
-calc();
-
-?>
+var_dump($sum);
