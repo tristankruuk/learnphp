@@ -15,3 +15,4 @@ Router::post('/forms', [PublicController::class, 'answer']);
 Router::get('/admin/articles', [ArticlesController::class, 'index']);
 Router::get('/admin/articles/create', [ArticlesController::class, 'create']);
 Router::post('/admin/articles', [ArticlesController::class, 'store']);
+Router::get('/admin/articles/view', [ArticlesController::class, 'view']);

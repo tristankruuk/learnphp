@@ -18,7 +18,7 @@
           <td><?= $article->author ?></td>
           <td>
             <div class="btn-group">
-              <a href="#" class="btn btn-info">View</a>
+              <a href="/admin/articles/view?id=<?= $article->id ?>" class="btn btn-info">View</a>
               <a href="#" class="btn btn-warning">Edit</a>
               <a href="#" class="btn btn-danger">Delete</a>
             </div>

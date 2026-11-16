@@ -19,6 +19,16 @@ class ArticlesController
     }
 
     public function store() {
-        dump($_POST);
+        $article = new Article();
+        $article->title = $_POST['title'];
+        $article->body = $_POST['body'];
+        $article->date = $_POST['date'];
+        $article->author = $_POST['author'];
+        $article->save();
+        redirect('/admin/articles');
+    }
+
+    public function view() {
+        dump($_GET['id']);
     }
 }
