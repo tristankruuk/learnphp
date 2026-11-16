@@ -43,6 +43,12 @@ class DB {
         return $result->fetch();
     }
 
+    public function where($table, $class, $fieldName, $value) {
+        $sql = "SELECT * FROM $table WHERE $fieldName='$value'";
+        $result = $this->conn->query($sql);
+        $result->setFetchMode(PDO::FETCH_CLASS, $class);
+        return $result->fetchAll();
+    }
 
     public function update($table, $fields, $id) {
         $updateText = '';
