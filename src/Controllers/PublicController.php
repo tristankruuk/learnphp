@@ -2,15 +2,19 @@
 
 namespace App\Controllers;
 
-use App\DB;
+
+use App\Models\Article;
+use App\Models\User;
 
 class PublicController
 {
     public function index()
     {
-        $db = new DB();
-        $articles = $db->all();
+        
+        $articles = Article::all();
         dump($articles);
+        $users = User::all();
+        dump($users);
         // $title = 'World';
         // view('index', compact('title', 'posts'));
     }
