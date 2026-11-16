@@ -67,4 +67,36 @@ class PublicController
         ];
         view('us', compact('title', 'posts'));
     }
+
+    public function tech()
+    {
+        $title = 'Technology';
+        $posts = [
+            [
+                'title' => 'Some technology title 1',
+                'content' => 'Some technology content 1',
+                'date' => 'January 1, 2021',
+                'author' => 'Pets',
+            ],
+            [
+                'title' => 'Some technology title 2',
+                'content' => 'Some technology content 1',
+                'date' => 'January 1, 2021',
+                'author' => 'Juss',
+            ],
+            [
+                'title' => 'Some technology title 3',
+                'content' => 'Some technology content 1',
+                'date' => 'January 1, 2021',
+                'author' => 'Alex',
+            ],
+            [
+                'title' => 'Some technology title 4',
+                'content' => 'Some technology content 1',
+                'date' => 'January 1, 2021',
+                'author' => 'Manivald',
+            ]
+        ];
+        view('tech', compact('title', 'posts'));
+    }
 }
