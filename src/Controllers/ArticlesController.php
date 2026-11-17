@@ -19,6 +19,14 @@ class ArticlesController
     }
 
     public function store() {
+        $tmp = $_FILES['image']['tmp_name'];
+        $ext = pathinfo($_FILES['image']['name'],PATHINFO_EXTENSION);
+        $uploads = __DIR__ . '/../../public/uploads/';
+        do {
+            $filename = md5($_FILES['image']['name'] . microtime() . rand(PHP_INT_MIN, PHP_INT_MAX)) . ".$ext";
+        } while(file_exists($uploads . $filename));
+        move_uploaded_file($tmp, $uploads . $filename);
+        dd($_POST, $_FILES);
         $article = new Article();
         $article->title = $_POST['title'];
         $article->body = $_POST['body'];
