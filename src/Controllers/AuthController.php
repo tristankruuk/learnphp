@@ -6,9 +6,19 @@ use App\Models\User;
 
 class AuthController
 {
-    public function loginForm() {}
+    public function loginForm() {
+        view('auth/login');
+    }
 
-    public function login() {}
+    public function login() {
+        $user = User::where('email', $_POST['email']);
+        $user = $user ? $user[0] : null;
+        if(!$user || $user->password !== $_POST['password']) {
+            return redirect('/login');
+        }
+        $_SESSION['userID'] = $user->id;
+        redirect('/');
+    }
 
     public function registerForm()
     {
@@ -29,5 +39,8 @@ class AuthController
         redirect('/login');
     }
 
-    public function logout() {}
+    public function logout() {
+        unset($_SESSION['userID']);
+        redirect('/');
+    }
 }
